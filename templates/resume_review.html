@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Review - Smart Career Advisor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Smart Career Advisor</div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('routes.index') }}">Home</a></li>
+                <li><a href="{{ url_for('routes.assessment') }}">Assessment</a></li>
+                <li><a href="{{ url_for('routes.job_market_analysis') }}">Job Market Analysis</a></li>
+                <li><a href="{{ url_for('routes.register') }}">Register</a></li>
+                <li><a href="{{ url_for('routes.resume_review') }}">Resume Review</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Resume Review</h1>
+        <p>Our experts will review and optimize your resume to make it stand out.</p>
+        <form id="resumeUploadForm" method="POST" enctype="multipart/form-data" action="{{ url_for('routes.resume_review') }}">
+            <label for="resume">Upload your resume:</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+            <button type="submit" class="btn">Submit for Review</button>
+        </form>
+
+        <div id="resultsSection" style="margin-top: 2rem; display: none;">
+            <h2>Your Top Job Matches</h2>
+            <div id="matchesList" class="matches-list">
+                <!-- Matches will be populated here by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Smart Career Advisor. All rights reserved.</p>
+        </div>
+    </footer>
+    <style>
+        .matches-list {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .match-item {
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .match-score {
+            float: right;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
